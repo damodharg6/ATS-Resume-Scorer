@@ -29,11 +29,16 @@ def _secret(key: str, section: str = 'supabase') -> str:
 SUPABASE_URL = _secret('SUPABASE_URL')
 SUPABASE_ANON_KEY = _secret('SUPABASE_ANON_KEY')
 
+# Debug logs to verify Render environment injection
+logger.info(f"SUPABASE_URL initialized: {SUPABASE_URL} (length={len(SUPABASE_URL) if SUPABASE_URL else 0})")
+logger.info(f"SUPABASE_ANON_KEY initialized: {SUPABASE_ANON_KEY[:10] if SUPABASE_ANON_KEY else ''}... (length={len(SUPABASE_ANON_KEY) if SUPABASE_ANON_KEY else 0})")
+
 OAUTH_REDIRECT_URL = (
     os.getenv('AUTH_REDIRECT_URL')
     or _secret('redirect_uri', 'google_oauth')
     or 'http://localhost:8501'
 )
+
 
 
 def _missing_config() -> str | None:
