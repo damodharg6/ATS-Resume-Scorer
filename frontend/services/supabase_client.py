@@ -29,9 +29,10 @@ def _secret(key: str, section: str = 'supabase') -> str:
 SUPABASE_URL = _secret('SUPABASE_URL')
 SUPABASE_ANON_KEY = _secret('SUPABASE_ANON_KEY')
 
-# Debug logs to verify Render environment injection
-logger.info(f"Loaded SUPABASE_URL: {SUPABASE_URL}")
-logger.info(f"Loaded SUPABASE_ANON_KEY (first 15): {SUPABASE_ANON_KEY[:15] if SUPABASE_ANON_KEY else '[EMPTY]'}")
+# Debug prints to verify Render environment injection
+print(f"Loaded SUPABASE_URL: {SUPABASE_URL}")
+print(f"Loaded SUPABASE_ANON_KEY (first 15): {SUPABASE_ANON_KEY[:15] if SUPABASE_ANON_KEY else '[EMPTY]'}")
+
 
 
 OAUTH_REDIRECT_URL = (
