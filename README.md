@@ -93,19 +93,3 @@ streamlit run frontend/streamlit_app.py
 ```
 
 The app opens at `http://localhost:8501`.
-
-## Notes for students
-
-- **Never commit `.env` or `secrets.toml`** — they hold API keys. Both are in `.gitignore`; check before you push.
-- The first run downloads the Sentence Transformer model (~80 MB). It's cached afterwards.
-- If you don't have a Groq key yet, the scoring still works — only the LLM suggestions section will be empty.
-- `jupyter notebooks/` and `ml model/` are for experimentation and aren't required to run the app.
-
-## 📄 Resume / CV Ready Bullet Points
-
-If you want to showcase this project on your resume, here are 4 easy-to-defend bullet points:
-
-* **ATS Resume Analyzer & Dashboards**: Built an **ATS Resume Scorer** using **FastAPI** and **Streamlit** that extracts, structures, and scores resumes against job descriptions.
-* **Hybrid Keyword & Semantic Matching**: Engineered an NLP scoring pipeline using **spaCy** and **Sentence Transformers** (`all-MiniLM-L6-v2`) to compute keyword overlap and semantic similarity.
-* **LLM-Driven Suggestions**: Integrated the **Groq API** to provide dynamic, custom-generated resume optimization tips and actionable formatting adjustments.
-* **Exportable PDF Reports**: Developed an automated reporting tool utilizing **Jinja2** templates and **WeasyPrint** to compile scoring summaries into PDF reports.
