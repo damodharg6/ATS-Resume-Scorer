@@ -30,8 +30,9 @@ SUPABASE_URL = _secret('SUPABASE_URL')
 SUPABASE_ANON_KEY = _secret('SUPABASE_ANON_KEY')
 
 # Debug logs to verify Render environment injection
-logger.info(f"SUPABASE_URL initialized: {SUPABASE_URL} (length={len(SUPABASE_URL) if SUPABASE_URL else 0})")
-logger.info(f"SUPABASE_ANON_KEY initialized: {SUPABASE_ANON_KEY[:10] if SUPABASE_ANON_KEY else ''}... (length={len(SUPABASE_ANON_KEY) if SUPABASE_ANON_KEY else 0})")
+logger.info(f"Loaded SUPABASE_URL: {SUPABASE_URL}")
+logger.info(f"Loaded SUPABASE_ANON_KEY (first 15): {SUPABASE_ANON_KEY[:15] if SUPABASE_ANON_KEY else '[EMPTY]'}")
+
 
 OAUTH_REDIRECT_URL = (
     os.getenv('AUTH_REDIRECT_URL')
