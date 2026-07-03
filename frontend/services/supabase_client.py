@@ -26,8 +26,8 @@ def _secret(key: str, section: str = 'supabase') -> str:
         return ''
 
 
-SUPABASE_URL = _secret('SUPABASE_URL')
-SUPABASE_ANON_KEY = _secret('SUPABASE_ANON_KEY')
+SUPABASE_URL = _secret('SUPABASE_URL').strip().strip('"').strip("'")
+SUPABASE_ANON_KEY = _secret('SUPABASE_ANON_KEY').strip().strip('"').strip("'")
 
 # Debug prints to verify Render environment injection
 print(f"Loaded SUPABASE_URL: {SUPABASE_URL}")
