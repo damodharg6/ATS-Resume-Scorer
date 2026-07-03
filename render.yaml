@@ -1,0 +1,35 @@
+# Render Blueprint Specification
+# Use this to deploy both the FastAPI Backend and Streamlit Frontend on Render automatically.
+
+services:
+  # ── FastAPI Backend Service ──
+  - type: web
+    name: ats-scorer-backend
+    env: python
+    plan: free # Can be upgraded to starter/standard if needed
+    buildCommand: pip install -r requirements.txt && python -m spacy download en_core_web_md
+    startCommand: uvicorn backend.main:app --host 0.0.0.0 --port 10000
+    envVars:
+      - key: SUPABASE_URL
+        sync: false # Render will prompt you to enter this value
+      - key: SUPABASE_KEY
+        sync: false # service_role key
+      - key: SUPABASE_ANON_KEY
+        sync: false
+      - key: SUPABASE_JWT_SECRET
+        sync: false
+      - key: GROQ_API_KEY
+        sync: false
+
+  # ── Streamlit Frontend Service ──
+  - type: web
+    name: ats-scorer-frontend
+    env: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: streamlit run frontend/streamlit_app.py --server.port 8501 --server.address 0.0.0.0
+    envVars:
+      - key: SUPABASE_URL
+        sync: false
+      - key: SUPABASE_ANON_KEY
+        sync: false
