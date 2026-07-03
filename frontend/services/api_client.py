@@ -4,14 +4,20 @@ import requests
 import streamlit as st
 
 
+import os
+
 DEFAULT_BACKEND_URL = "http://localhost:8000"
 
 
 def _backend_url() -> str:
+    env_url = os.getenv("BACKEND_URL")
+    if env_url:
+        return env_url
     try:
         return st.secrets["backend"]["url"]
     except (KeyError, FileNotFoundError):
         return DEFAULT_BACKEND_URL
+
 
 
 def _auth_headers(access_token: str) -> Dict[str, str]:

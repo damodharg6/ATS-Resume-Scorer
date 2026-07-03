@@ -33,3 +33,9 @@ services:
         sync: false
       - key: SUPABASE_ANON_KEY
         sync: false
+      - key: BACKEND_URL
+        fromService:
+          name: ats-scorer-backend
+          type: web
+          property: host
+
